@@ -1,3 +1,9 @@
 <Solution>
+  <Folder Name="/CurrencyService/">
+    <Project Path="CurrencyService.Api/CurrencyService.Api.csproj" />
+  </Folder>
+  <Folder Name="/UserService/">
+    <Project Path="UserService.Api/UserService.Api.csproj" />
+  </Folder>
   <Project Path="UserCurrency.ApiGateway/UserCurrency.ApiGateway.csproj" />
 </Solution>
