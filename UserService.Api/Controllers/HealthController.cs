@@ -6,7 +6,7 @@ namespace UserService.Api.Controllers
 	[Route("[controller]")]
 	public class HealthController : ControllerBase
 	{
-		[HttpGet("user-service")]
+		[HttpGet]
 		public IActionResult Get()
 		{
 			return Ok("Ok user-service");
