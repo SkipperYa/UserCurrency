@@ -6,7 +6,7 @@ namespace CurrencyService.Api.Controllers
 	[Route("[controller]")]
 	public class HealthController : ControllerBase
 	{
-		[HttpGet("currency-service")]
+		[HttpGet]
 		public IActionResult Get()
 		{
 			return Ok("Ok currency-service");
