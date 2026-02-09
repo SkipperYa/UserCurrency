@@ -2,8 +2,14 @@
   <Folder Name="/CurrencyService/">
     <Project Path="CurrencyService.Api/CurrencyService.Api.csproj" />
   </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="UserCurrency.Common/UserCurrency.Common.csproj" Id="96282d65-b387-4d9c-b364-e86b27fcbf4e" />
+  </Folder>
   <Folder Name="/UserService/">
     <Project Path="UserService.Api/UserService.Api.csproj" />
+    <Project Path="UserService.Application/UserService.Application.csproj" />
+    <Project Path="UserService.Domain/UserService.Domain.csproj" />
+    <Project Path="UserService.Infrastructure/UserService.Infrastructure.csproj" />
   </Folder>
   <Project Path="UserCurrency.ApiGateway/UserCurrency.ApiGateway.csproj" />
 </Solution>
