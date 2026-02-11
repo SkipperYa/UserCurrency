@@ -3,18 +3,18 @@ using UserService.Domain.Entities;
 
 namespace UserService.Infrastructure.Database
 {
-	public class ApplicationContext : DbContext
+	public class UserDbContext : DbContext
 	{
 		public DbSet<User> Users => Set<User>();
 
-		public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+		public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
 		{
 			
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
+			modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserDbContext).Assembly);
 		}
 	}
 }

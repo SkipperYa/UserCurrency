@@ -8,11 +8,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CurrencyService.Api.Migrations
+namespace CurrencyService.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
-    [Migration("20260211095330_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(CurrencyDbContext))]
+    [Migration("20260211122527_InitialCurrencyServiceMigration")]
+    partial class InitialCurrencyServiceMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

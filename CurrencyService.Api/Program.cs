@@ -21,13 +21,13 @@ namespace CurrencyService.Api
 
 			builder.Services.AddProblemDetails();
 
-			builder.Services.AddDbContext<ApplicationContext>(options =>
+			builder.Services.AddDbContext<CurrencyDbContext>(options =>
 			{
 				options.UseNpgsql(
 					builder.Configuration.GetConnectionString("DefaultConnection"),
 					npgsql =>
 					{
-						npgsql.MigrationsAssembly("CurrencyService.Api");
+						npgsql.MigrationsAssembly("CurrencyService.Infrastructure");
 						npgsql.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorCodesToAdd: null);
 					}
 				);

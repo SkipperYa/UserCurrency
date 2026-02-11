@@ -22,13 +22,13 @@ namespace UserService.Api
 
 			builder.Services.AddProblemDetails();
 
-			builder.Services.AddDbContext<ApplicationContext>(options =>
+			builder.Services.AddDbContext<UserDbContext>(options =>
 			{
 				options.UseNpgsql(
 					builder.Configuration.GetConnectionString("DefaultConnection"),
 					npgsql =>
 					{
-						npgsql.MigrationsAssembly("UserService.Api");
+						npgsql.MigrationsAssembly("UserService.Infrastructure");
 						npgsql.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorCodesToAdd: null);
 					}
 				);
