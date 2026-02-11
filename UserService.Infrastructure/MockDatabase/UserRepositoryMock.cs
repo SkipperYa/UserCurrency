@@ -29,5 +29,10 @@ namespace UserService.Infrastructure.MockDatabase
 
 			throw new BusinessLogicException("Cant create user");
 		}
+
+		public Task<User?> GetByNameAsync(string userName, CancellationToken cancellationToken)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

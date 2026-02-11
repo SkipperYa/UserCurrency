@@ -50,12 +50,26 @@ namespace UserService.Infrastructure.Database
 				}
 				else
 				{
-					throw new BusinessLogicException($"Create user error", dbue);
+					throw new ApplicationErrorException($"Create user error", dbue);
 				}
 			}
 			catch (Exception e)
 			{
 				throw new ApplicationErrorException("Error while create user", e);
+			}
+		}
+
+		public async Task<User?> GetByNameAsync(string userName, CancellationToken cancellationToken)
+		{
+			try
+			{
+				return await applicationContext.Users
+					.AsNoTracking()
+					.FirstOrDefaultAsync(u => u.Name == userName, cancellationToken);
+			}
+			catch (Exception e)
+			{
+				throw new ApplicationErrorException("Error while check login user", e);
 			}
 		}
 	}
