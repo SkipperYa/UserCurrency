@@ -47,8 +47,6 @@ namespace UserService.Api
 
 			app.UseExceptionHandler();
 
-			app.UseHttpsRedirection();
-
 			app.MapControllers();
 
 			app.Run();

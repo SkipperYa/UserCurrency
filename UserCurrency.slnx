@@ -1,6 +1,9 @@
 <Solution>
   <Folder Name="/CurrencyService/">
     <Project Path="CurrencyService.Api/CurrencyService.Api.csproj" />
+    <Project Path="CurrencyService.Application/CurrencyService.Application.csproj" Id="9a29ee3c-1fca-4f52-b6a3-3e5705821988" />
+    <Project Path="CurrencyService.Domain/CurrencyService.Domain.csproj" Id="b8004cd7-eebf-4b4c-a7b5-8208e1953293" />
+    <Project Path="CurrencyService.Infrastructure/CurrencyService.Infrastructure.csproj" Id="0801915b-2551-402a-8ea5-90950a54ecd5" />
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="UserCurrency.Common/UserCurrency.Common.csproj" Id="96282d65-b387-4d9c-b364-e86b27fcbf4e" />
