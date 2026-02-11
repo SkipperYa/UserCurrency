@@ -15,4 +15,5 @@
     <Project Path="UserService.Infrastructure/UserService.Infrastructure.csproj" />
   </Folder>
   <Project Path="UserCurrency.ApiGateway/UserCurrency.ApiGateway.csproj" />
+  <Project Path="UserCurrency.MigrationService/UserCurrency.MigrationService.csproj" Id="1fc59684-45f3-4e2d-b036-7d48027891a6" />
 </Solution>

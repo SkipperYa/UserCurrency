@@ -7,9 +7,9 @@ namespace CurrencyService.Infrastructure.Database
 {
 	public class CurrencyUserRepository : ICurrencyUserRepository
 	{
-		private readonly ApplicationContext applicationContext;
+		private readonly CurrencyDbContext applicationContext;
 
-		public CurrencyUserRepository(ApplicationContext applicationContext)
+		public CurrencyUserRepository(CurrencyDbContext applicationContext)
 		{
 			this.applicationContext = applicationContext;
 		}

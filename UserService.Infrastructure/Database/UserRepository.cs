@@ -8,9 +8,9 @@ namespace UserService.Infrastructure.Database
 {
 	public class UserRepository : IUserRepository
 	{
-		private readonly ApplicationContext applicationContext;
+		private readonly UserDbContext applicationContext;
 
-		public UserRepository(ApplicationContext applicationContext)
+		public UserRepository(UserDbContext applicationContext)
 		{
 			this.applicationContext = applicationContext;
 		}
