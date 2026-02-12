@@ -4,7 +4,7 @@ namespace CurrencyService.Application.Interfaces
 {
 	public interface ICurrencyRepository
 	{
-		Task<List<CurrencyUser>> GetUserCurrencies(long userId, CancellationToken cancellationToken);
-		Task<Currency> CreateOrUpdate(Currency item, CancellationToken cancellationToken);
+		Task<List<CurrencyUser>> GetUserCurrenciesAsync(long userId, CancellationToken cancellationToken);
+		Task<Currency> CreateOrUpdateAsync(Currency item, CancellationToken cancellationToken);
 	}
 }
