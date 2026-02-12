@@ -3,7 +3,7 @@ using UserService.Domain.Entities;
 
 namespace UserService.Application.Interfaces
 {
-	public interface IRegistrationUserHandler : IBaseHandler<RegistrationUserCommand, User?>
+	public interface IRegistrationUserHandler : IBaseHandler<RegistrationUserCommand, User>
 	{
 	}
 }

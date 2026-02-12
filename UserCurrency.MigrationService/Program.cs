@@ -16,8 +16,7 @@ namespace UserCurrency.MigrationService
 				var builder = Host.CreateDefaultBuilder(args)
 					.ConfigureServices((context, services) =>
 					{
-						//var connection = context.Configuration.GetConnectionString("ConnectionString");
-						var connection = "Host=localhost;Port=5432;Database=UserCurrency;Username=postgres;Password=000000";
+						var connection = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 						services.AddDbContext<UserDbContext>(options => options.UseNpgsql(connection));
 

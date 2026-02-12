@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using UserCurrency.Common.Models;
 using UserService.Application.Commands;
 using UserService.Application.Dto;
 using UserService.Application.Interfaces;
@@ -19,9 +20,9 @@ namespace UserService.Api.Controllers
 		[HttpPost("registration")]
 		public async Task<IActionResult> Registration([FromBody] RegistrationUserDto dto, CancellationToken cancellationToken)
 		{
-			var result = await handler.HandleAsync(new RegistrationUserCommand() { Name = dto.Name, Password = dto.Password }, cancellationToken);
+			await handler.HandleAsync(new RegistrationUserCommand() { Name = dto.Name, Password = dto.Password }, cancellationToken);
 			
-			return Ok();
+			return Ok(new Response());
 		}
 	}
 }

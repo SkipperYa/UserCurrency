@@ -20,16 +20,25 @@ namespace UserService.Infrastructure.Services
 
 		public string GetJwtToken(long userId)
 		{
+			var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER")
+				?? throw new ApplicationErrorException("Jwt issuer env is empty");
+
+			var audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")
+				?? throw new ApplicationErrorException("Jwt audience env is empty");
+
+			var key = Environment.GetEnvironmentVariable("JWT_KEY")
+				?? throw new ApplicationErrorException("Jwt key env is empty");
+
 			try
 			{
 				var jwtToken = new JwtSecurityToken(
-					authOptions.Value.Issuer,
-					authOptions.Value.Audience,
+					issuer,
+					audience,
 					[
 						new (ClaimTypes.NameIdentifier, userId.ToString()),
 					],
-					expires: DateTime.UtcNow.AddDays(30),
-					signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authOptions.Value.Key)), SecurityAlgorithms.HmacSha256)
+					expires: DateTime.UtcNow.AddMinutes(authOptions.Value.ExpirationTimeMin),
+					signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)), SecurityAlgorithms.HmacSha256)
 				);
 
 				var token = new JwtSecurityTokenHandler().WriteToken(jwtToken);

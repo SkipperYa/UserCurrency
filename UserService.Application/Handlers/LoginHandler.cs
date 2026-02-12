@@ -31,15 +31,8 @@ namespace UserService.Application.Handlers
 
 			var hasPassword = await hashPasswordService.HashPasswordAsync(command.Password);
 
-			var success = await repository.CheckLoginAsync(command.UserName, hasPassword, cancellationToken);
-
-			if (!success)
-			{
-				throw new BusinessLogicException("Invalid login or password");
-			}
-
-			var user = await repository.GetByNameAsync(command.UserName, cancellationToken)
-				?? throw new ApplicationErrorException($"Cant find user by Name {command.UserName}");
+			var user = await repository.GetByLoginAndPasswordAsync(command.UserName, hasPassword, cancellationToken)
+				?? throw new ApplicationErrorException($"Invalid login or password.");
 
 			var token = jwtTokenService.GetJwtToken(user.Id);
 

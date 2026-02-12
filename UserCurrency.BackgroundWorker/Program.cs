@@ -1,11 +1,11 @@
-using CurrencyService.Api.ExceptionHandler;
-using CurrencyService.Application.Handlers;
 using CurrencyService.Application.Interfaces;
 using CurrencyService.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using UserCurrency.Common.Extensions;
+using System.Text;
+using UserCurrency.BackgroundWorker.BackgroundServices;
+using UserCurrency.BackgroundWorker.Options;
 
-namespace CurrencyService.Api
+namespace UserCurrency.BackgroundWorker
 {
 	public class Program
 	{
@@ -13,13 +13,7 @@ namespace CurrencyService.Api
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
-			builder.Services.AddControllers();
-
-			builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-
-			builder.Services.AddJwtAuthorization(builder.Configuration);
-
-			builder.Services.AddProblemDetails();
+			builder.Services.Configure<CurrencyHostedServiceOptions>(builder.Configuration.GetSection("CurrencyHostedServiceOptions"));
 
 			builder.Services.AddDbContext<CurrencyDbContext>(options =>
 			{
@@ -37,17 +31,21 @@ namespace CurrencyService.Api
 				options.EnableSensitiveDataLogging(false);
 			});
 
-			builder.Services.AddTransient<ICurrencyHandler, CurrencyHandler>();
 			builder.Services.AddTransient<ICurrencyRepository, CurrencyRepository>();
 
+			builder.Services.AddHostedService<CurrencyHostedService>();
+
+			builder.Services.AddHttpClient(
+				"DailyCurrencyClient",
+				client =>
+				{
+					client.BaseAddress = new Uri("https://www.cbr.ru");
+				}
+			);
+
+			Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
 			var app = builder.Build();
-
-			app.UseExceptionHandler();
-
-			app.UseAuthentication();
-			app.UseAuthorization();
-
-			app.MapControllers();
 
 			app.Run();
 		}

@@ -24,8 +24,10 @@ namespace UserService.Api
 
 			builder.Services.AddDbContext<UserDbContext>(options =>
 			{
+				var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+
 				options.UseNpgsql(
-					builder.Configuration.GetConnectionString("DefaultConnection"),
+					connectionString,
 					npgsql =>
 					{
 						npgsql.MigrationsAssembly("UserService.Infrastructure");

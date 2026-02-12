@@ -5,11 +5,11 @@ using UserCurrency.Common.Exceptions;
 
 namespace CurrencyService.Application.Handlers
 {
-	public class CurrencyUserHandler : ICurrencyUserHandler
+	public class CurrencyHandler : ICurrencyHandler
 	{
-		private readonly ICurrencyUserRepository repository;
+		private readonly ICurrencyRepository repository;
 
-		public CurrencyUserHandler(ICurrencyUserRepository repository)
+		public CurrencyHandler(ICurrencyRepository repository)
 		{
 			this.repository = repository;
 		}
@@ -18,7 +18,7 @@ namespace CurrencyService.Application.Handlers
 		{
 			if (command.UserId <= 0)
 			{
-				throw new BusinessLogicException("UserId is required");
+				throw new BusinessLogicException("UserId is required.");
 			}
 
 			var currencyUserList = await repository.GetUserCurrencies(command.UserId, cancellationToken);
