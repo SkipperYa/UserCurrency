@@ -6,19 +6,16 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5005"
+      "applicationUrl": "http://localhost:5007"
     },
     "https": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "CONNECTION_STRING": "Host=localhost;Port=5432;Database=UserCurrency;Username=postgres;Password=000000",
-        "JWT_ISSUER": "UserCurrencyIssuer",
-        "JWT_AUDIENCE": "UserCurrencyAudience",
-        "JWT_KEY": "a4a8cca7-b21d-48cb-88ce-fa7b725299e1"
+        "CONNECTION_STRING": "Host=localhost;Port=5432;Database=UserCurrency;Username=postgres;Password=000000"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5004;http://localhost:5005"
+      "applicationUrl": "https://localhost:5007;http://localhost:5008"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -32,8 +29,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:54544",
-      "sslPort": 44379
+      "applicationUrl": "http://localhost:59669",
+      "sslPort": 44393
     }
   }
 }

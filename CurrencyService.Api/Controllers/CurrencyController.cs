@@ -1,31 +1,24 @@
 ﻿using CurrencyService.Application.Interfaces;
 using CurrencyService.Application.Queries;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using UserCurrency.Common.Models;
 
 namespace CurrencyService.Api.Controllers
 {
-	[ApiController]
 	[Route("[controller]")]
-	[Authorize]
-	public class CurrencyController : ControllerBase
+	public class CurrencyController : BaseAuthorizedApiController
 	{
-		private readonly ICurrencyUserHandler currencyUserHandler;
-		private long userId => User.HasClaim(c => c.Type == ClaimTypes.NameIdentifier) && long.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "", out var id)
-			? id
-			: 0;
+		private readonly ICurrencyHandler currencyHandler;
 
-		public CurrencyController(ICurrencyUserHandler currencyUserHandler)
+		public CurrencyController(ICurrencyHandler currencyHandler)
 		{
-			this.currencyUserHandler = currencyUserHandler;
+			this.currencyHandler = currencyHandler;
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> GetUserCurrencies(CancellationToken cancellationToken)
 		{
-			var currencies = await currencyUserHandler.HandleAsync(new CurrencyUserQuery() { UserId = userId }, cancellationToken);
+			var currencies = await currencyHandler.HandleAsync(new CurrencyUserQuery() { UserId = UserId }, cancellationToken);
 			return Ok(new Response() { Value = currencies });
 		}
 	}

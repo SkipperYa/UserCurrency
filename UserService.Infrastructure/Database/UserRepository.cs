@@ -15,21 +15,6 @@ namespace UserService.Infrastructure.Database
 			this.applicationContext = applicationContext;
 		}
 
-		public async Task<bool> CheckLoginAsync(string userName, string hashPassword, CancellationToken cancellationToken)
-		{
-			try
-			{
-				return await applicationContext.Users
-					.AsNoTracking()
-					.Where(u => u.Name == userName)
-					.AnyAsync(u => EF.Property<string>(u, "Password") == hashPassword, cancellationToken);
-			}
-			catch (Exception e)
-			{
-				throw new ApplicationErrorException("Error while check login user", e);
-			}
-		}
-
 		public async Task<User> CreateAsync(User item, string hashPassword, CancellationToken cancellationToken)
 		{
 			try
@@ -59,17 +44,17 @@ namespace UserService.Infrastructure.Database
 			}
 		}
 
-		public async Task<User?> GetByNameAsync(string userName, CancellationToken cancellationToken)
+		public async Task<User?> GetByLoginAndPasswordAsync(string userName, string hashPassword, CancellationToken cancellationToken)
 		{
 			try
 			{
 				return await applicationContext.Users
 					.AsNoTracking()
-					.FirstOrDefaultAsync(u => u.Name == userName, cancellationToken);
+					.FirstOrDefaultAsync(u => u.Name == userName && EF.Property<string>(u, "Password") == hashPassword, cancellationToken);
 			}
 			catch (Exception e)
 			{
-				throw new ApplicationErrorException("Error while check login user", e);
+				throw new ApplicationErrorException("Error while load user by login", e);
 			}
 		}
 	}

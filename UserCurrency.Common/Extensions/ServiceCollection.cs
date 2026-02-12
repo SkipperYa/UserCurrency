@@ -13,19 +13,18 @@ namespace UserCurrency.Common.Extensions
 		{
 			serviceDescriptors.Configure<AuthOptions>(configuration.GetSection("AuthOptions"));
 
-			var authOptions = configuration.GetSection("AuthOptions").Get<AuthOptions>()
-				?? throw new ApplicationException("AuthOptions is missing");
+			var authOptions = configuration.GetSection("AuthOptions").Get<AuthOptions>() ?? new AuthOptions();
 
 			serviceDescriptors.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer((options) => {
 					options.TokenValidationParameters = new TokenValidationParameters()
 					{
 						ValidateIssuer = true,
-						ValidIssuer = authOptions.Issuer,
+						ValidIssuer = Environment.GetEnvironmentVariable("JWT_ISSUER"),
 						ValidateAudience = true,
-						ValidAudience = authOptions.Audience,
+						ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE"),
 						ValidateLifetime = true,
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authOptions.Key)),
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_KEY") ?? "")),
 						ValidateIssuerSigningKey = true,
 					};
 #if DEBUG

@@ -16,7 +16,7 @@ namespace UserService.Application.Handlers
 			this.hashPasswordService = hashPasswordService;
 		}
 
-		public async Task<User?> HandleAsync(RegistrationUserCommand command, CancellationToken cancellationToken)
+		public async Task<User> HandleAsync(RegistrationUserCommand command, CancellationToken cancellationToken)
 		{
 			if (string.IsNullOrEmpty(command.Name))
 			{
@@ -30,7 +30,14 @@ namespace UserService.Application.Handlers
 
 			var hashPassword = await hashPasswordService.HashPasswordAsync(command.Password);
 
-			return await repository.CreateAsync(new User() { Name = command.Name }, hashPassword, cancellationToken);
+			var user = await repository.CreateAsync(new User() { Name = command.Name }, hashPassword, cancellationToken);
+
+			if (user.Id <= 0)
+			{
+				throw new BusinessLogicException("Cant create user.");
+			}
+
+			return user;
 		}
 	}
 }
