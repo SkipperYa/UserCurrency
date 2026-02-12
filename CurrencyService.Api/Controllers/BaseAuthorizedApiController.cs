@@ -4,6 +4,9 @@ using System.Security.Claims;
 
 namespace CurrencyService.Api.Controllers
 {
+	/// <summary>
+	/// Базовый контроллер с авторизацией
+	/// </summary>
 	[ApiController]
 	[Authorize]
 	public abstract class BaseAuthorizedApiController : ControllerBase

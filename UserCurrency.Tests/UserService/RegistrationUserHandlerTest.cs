@@ -7,6 +7,9 @@ using UserService.Domain.Entities;
 
 namespace UserCurrency.Tests.UserService
 {
+	/// <summary>
+	/// Набор тестов на регистрацию пользователя
+	/// </summary>
 	[TestClass]
 	public class RegistrationUserHandlerTest
 	{
@@ -22,6 +25,10 @@ namespace UserCurrency.Tests.UserService
 			handler = new RegistrationUserHandler(repository.Object, hashPasswordService.Object);
 		}
 
+		/// <summary>
+		/// Тест на успешную регистрацию пользователя
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task CreateUserWithValidData()
 		{
@@ -42,6 +49,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("test", result.Name);
 		}
 
+		/// <summary>
+		/// Тест на создание с невалидным именем
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task CreateUserWithInvalidName()
 		{
@@ -61,6 +72,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("User Name is required.", exception.Message);
 		}
 
+		/// <summary>
+		/// Тест на создание пользователя с невалидным паролем
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task CreateUserWithInvalidPassword()
 		{

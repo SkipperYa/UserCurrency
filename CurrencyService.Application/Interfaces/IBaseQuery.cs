@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CurrencyService.Application.Interfaces
+﻿namespace CurrencyService.Application.Interfaces
 {
+	/// <summary>
+	/// Базовый интерфейс запроса
+	/// </summary>
 	public interface IBaseQuery
 	{
 	}

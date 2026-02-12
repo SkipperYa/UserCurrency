@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CurrencyService.Infrastructure.Database
 {
+	/// <summary>
+	/// Контекст валюты
+	/// </summary>
 	public class CurrencyDbContext : DbContext
 	{
 		public DbSet<Currency> Currencies => Set<Currency>();

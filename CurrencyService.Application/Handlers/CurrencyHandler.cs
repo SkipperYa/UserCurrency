@@ -5,6 +5,9 @@ using UserCurrency.Common.Exceptions;
 
 namespace CurrencyService.Application.Handlers
 {
+	/// <summary>
+	/// Реализация обработчика получения валют пользователя
+	/// </summary>
 	public class CurrencyHandler : ICurrencyHandler
 	{
 		private readonly ICurrencyRepository repository;

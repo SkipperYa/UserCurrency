@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CurrencyService.Infrastructure.Configurations
 {
+	/// <summary>
+	/// Настройка конфигурации валюты
+	/// </summary>
 	public sealed class CurrencyConfiguration : IEntityTypeConfiguration<Currency>
 	{
 		public void Configure(EntityTypeBuilder<Currency> builder)

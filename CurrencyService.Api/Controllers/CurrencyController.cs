@@ -5,6 +5,9 @@ using UserCurrency.Common.Models;
 
 namespace CurrencyService.Api.Controllers
 {
+	/// <summary>
+	/// Контроллер валют
+	/// </summary>
 	[Route("[controller]")]
 	public class CurrencyController : BaseAuthorizedApiController
 	{
@@ -15,6 +18,11 @@ namespace CurrencyService.Api.Controllers
 			this.currencyHandler = currencyHandler;
 		}
 
+		/// <summary>
+		/// Получить валюты пользователя
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpGet]
 		public async Task<IActionResult> GetUserCurrencies(CancellationToken cancellationToken)
 		{

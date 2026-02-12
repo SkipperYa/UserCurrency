@@ -6,6 +6,9 @@ using UserService.Application.Interfaces;
 
 namespace UserService.Api.Controllers
 {
+	/// <summary>
+	/// Логин контролер
+	/// </summary>
 	[ApiController]
 	[Route("[controller]")]
 	public class LoginController : ControllerBase
@@ -17,6 +20,12 @@ namespace UserService.Api.Controllers
 			this.handler = handler;
 		}
 
+		/// <summary>
+		/// Авторизация пользователя
+		/// </summary>
+		/// <param name="dto"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpPost]
 		public async Task<IActionResult> Login([FromBody] LoginDto dto, CancellationToken cancellationToken)
 		{
@@ -25,9 +34,15 @@ namespace UserService.Api.Controllers
 			return Ok(new Response() { Value = new { Token = result } });
 		}
 
+		/// <summary>
+		/// Логаут
+		/// </summary>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
 		[HttpGet]
 		public IActionResult Logout(CancellationToken cancellationToken)
 		{
+			// Вернуть 200, так как у токена есть вермя жизни
 			return Ok();
 		}
 	}

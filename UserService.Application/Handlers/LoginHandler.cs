@@ -4,6 +4,9 @@ using UserService.Application.Interfaces;
 
 namespace UserService.Application.Handlers
 {
+	/// <summary>
+	/// Реализация обработчика авторизации пользователя
+	/// </summary>
 	public class LoginHandler : ILoginHandler
 	{
 		private readonly IUserRepository repository;

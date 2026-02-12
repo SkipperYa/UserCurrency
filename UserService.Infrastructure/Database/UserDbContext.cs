@@ -3,6 +3,9 @@ using UserService.Domain.Entities;
 
 namespace UserService.Infrastructure.Database
 {
+	/// <summary>
+	/// Контекст пользователя
+	/// </summary>
 	public class UserDbContext : DbContext
 	{
 		public DbSet<User> Users => Set<User>();

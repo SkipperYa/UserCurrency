@@ -8,6 +8,9 @@ using UserCurrency.BackgroundWorker.Options;
 
 namespace UserCurrency.BackgroundWorker.BackgroundServices
 {
+	/// <summary>
+	/// Фоновый сервис обновления валют
+	/// </summary>
 	public class CurrencyUpdaterHostedService : BackgroundService
 	{
 		private readonly IOptions<CurrencyHostedServiceOptions> options;
@@ -27,6 +30,11 @@ namespace UserCurrency.BackgroundWorker.BackgroundServices
 			this.serviceProvider = serviceProvider;
 		}
 
+		/// <summary>
+		/// Обновления валют
+		/// </summary>
+		/// <param name="stoppingToken"></param>
+		/// <returns></returns>
 		private async Task UpdateCurrenciesAsync(CancellationToken stoppingToken)
 		{
 			var client = httpClientFactory.CreateClient("DailyCurrencyClient");
@@ -68,7 +76,7 @@ namespace UserCurrency.BackgroundWorker.BackgroundServices
 				}
 				catch (OperationCanceledException)
 				{
-
+					// OperationCanceledException игнорируется
 				}
 				catch (Exception e)
 				{
@@ -81,7 +89,7 @@ namespace UserCurrency.BackgroundWorker.BackgroundServices
 				}
 				catch (OperationCanceledException)
 				{
-
+					// OperationCanceledException игнорируется
 				}
 				catch (Exception e)
 				{

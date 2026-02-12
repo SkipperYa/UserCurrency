@@ -7,6 +7,9 @@ using UserCurrency.Common.Exceptions;
 
 namespace UserCurrency.Tests.CurrencyService
 {
+	/// <summary>
+	/// Набор тестов для микросервиса валют
+	/// </summary>
 	[TestClass]
 	public class CurrencyHandlerTest
 	{
@@ -20,6 +23,10 @@ namespace UserCurrency.Tests.CurrencyService
 			handler = new CurrencyHandler(repository.Object);
 		}
 
+		/// <summary>
+		/// Тест на успешное получение валют пользователя
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task GetUserCurrenciesSuccess()
 		{
@@ -54,6 +61,10 @@ namespace UserCurrency.Tests.CurrencyService
 			Assert.AreEqual(expected[0].Rate, result[0].Rate);
 		}
 
+		/// <summary>
+		/// Тест на неудачное получение валют без идентификатора пользователя
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task GetUserCurrenciesWithWrongUserId()
 		{

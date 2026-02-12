@@ -5,6 +5,9 @@ using UserCurrency.Common.Exceptions;
 
 namespace CurrencyService.Api.ExceptionHandler
 {
+	/// <summary>
+	/// Глобальный обработчик исключений
+	/// </summary>
 	public class GlobalExceptionHandler : IExceptionHandler
 	{
 		private readonly ILogger<GlobalExceptionHandler> logger;
@@ -29,6 +32,12 @@ namespace CurrencyService.Api.ExceptionHandler
 			return true;
 		}
 
+		/// <summary>
+		/// Сформировать ProblemDetails по исключению
+		/// </summary>
+		/// <param name="httpContext"></param>
+		/// <param name="exception"></param>
+		/// <returns></returns>
 		private ProblemDetails MapExceptionToProblemDetails(HttpContext httpContext, Exception exception)
 		{
 			return exception switch

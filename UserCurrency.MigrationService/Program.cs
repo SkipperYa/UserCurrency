@@ -1,12 +1,14 @@
 ﻿using CurrencyService.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UserService.Infrastructure.Database;
 
 namespace UserCurrency.MigrationService
 {
+	/// <summary>
+	/// Сервис миграции микросервисов
+	/// </summary>
 	internal class Program
 	{
 		static async Task Main(string[] args)

@@ -6,6 +6,9 @@ using UserCurrency.Common.Exceptions;
 
 namespace CurrencyService.Infrastructure.Database
 {
+	/// <summary>
+	/// Реализация репозитория валюты
+	/// </summary>
 	public class CurrencyRepository : ICurrencyRepository
 	{
 		private readonly CurrencyDbContext applicationContext;

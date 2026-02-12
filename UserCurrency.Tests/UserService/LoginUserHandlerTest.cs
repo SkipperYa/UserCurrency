@@ -7,6 +7,9 @@ using UserService.Domain.Entities;
 
 namespace UserCurrency.Tests.UserService
 {
+	/// <summary>
+	/// Набор тестов для микросервиса пользователя
+	/// </summary>
 	[TestClass]
 	public class LoginUserHandlerTest
 	{
@@ -24,6 +27,10 @@ namespace UserCurrency.Tests.UserService
 			handler = new LoginHandler(repository.Object, hashPasswordService.Object, jwtTokenService.Object);
 		}
 
+		/// <summary>
+		/// Тест на успешную авторизацию
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task LoginWithValidData()
 		{
@@ -47,6 +54,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("token", result);
 		}
 
+		/// <summary>
+		/// Тест на авторизацию без логина
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task LoginWithEmptyUserName()
 		{
@@ -70,6 +81,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("User Name is required.", exception.Message);
 		}
 
+		/// <summary>
+		/// Тест на авторизацию без пароля
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task LoginWithEmptyPassword()
 		{
@@ -93,6 +108,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("User Password is required.", exception.Message);
 		}
 
+		/// <summary>
+		/// Тест на авторизацию с неверным логином
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task LoginWithWrongUserName()
 		{
@@ -116,6 +135,10 @@ namespace UserCurrency.Tests.UserService
 			Assert.AreEqual("Invalid login or password.", exception.Message);
 		}
 
+		/// <summary>
+		/// Тест на авторизацию с неверным паролем
+		/// </summary>
+		/// <returns></returns>
 		[TestMethod]
 		public async Task LoginWithWrongPassword()
 		{

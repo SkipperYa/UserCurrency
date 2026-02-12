@@ -6,6 +6,9 @@ using UserService.Domain.Entities;
 
 namespace UserService.Infrastructure.Database
 {
+	/// <summary>
+	/// Реализация репозитория пользователя
+	/// </summary>
 	public class UserRepository : IUserRepository
 	{
 		private readonly UserDbContext applicationContext;

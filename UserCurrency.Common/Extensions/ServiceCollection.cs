@@ -7,8 +7,17 @@ using UserCurrency.Common.Options;
 
 namespace UserCurrency.Common.Extensions
 {
+	/// <summary>
+	/// Метды расширения для IServiceCollection
+	/// </summary>
 	public static class ServiceCollection
 	{
+		/// <summary>
+		/// Подключение JWT авторизации
+		/// </summary>
+		/// <param name="serviceDescriptors"></param>
+		/// <param name="configuration"></param>
+		/// <returns></returns>
 		public static IServiceCollection AddJwtAuthorization(this IServiceCollection serviceDescriptors, IConfiguration configuration)
 		{
 			serviceDescriptors.Configure<AuthOptions>(configuration.GetSection("AuthOptions"));

@@ -5,6 +5,9 @@ using UserService.Domain.Entities;
 
 namespace UserService.Application.Handlers
 {
+	/// <summary>
+	/// Реализация обработчика регистрации пользователя
+	/// </summary>
 	public class RegistrationUserHandler : IRegistrationUserHandler
 	{
 		private readonly IUserRepository repository;

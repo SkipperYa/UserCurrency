@@ -5,6 +5,9 @@ using UserService.Application.Interfaces;
 
 namespace UserService.Infrastructure.Services
 {
+	/// <summary>
+	/// Реализация сервиса хэширования пароля
+	/// </summary>
 	public class HashPasswordService : IHashPasswordService
 	{
 		public async Task<string> HashPasswordAsync(string password)

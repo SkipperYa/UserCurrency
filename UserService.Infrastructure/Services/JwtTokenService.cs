@@ -9,6 +9,9 @@ using UserService.Application.Interfaces;
 
 namespace UserService.Infrastructure.Services
 {
+	/// <summary>
+	/// Реализация генерации JWT токена
+	/// </summary>
 	public class JwtTokenService : IJwtTokenService
 	{
 		private readonly IOptions<AuthOptions> authOptions;

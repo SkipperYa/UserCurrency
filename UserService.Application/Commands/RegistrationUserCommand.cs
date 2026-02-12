@@ -2,6 +2,9 @@
 
 namespace UserService.Application.Commands
 {
+	/// <summary>
+	/// Команда регистрации пользователя
+	/// </summary>
 	public class RegistrationUserCommand : IBaseCommand
 	{
 		public string Name { get; set; } = "";
