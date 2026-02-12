@@ -33,7 +33,7 @@ namespace UserCurrency.BackgroundWorker
 
 			builder.Services.AddTransient<ICurrencyRepository, CurrencyRepository>();
 
-			builder.Services.AddHostedService<CurrencyHostedService>();
+			builder.Services.AddHostedService<CurrencyUpdaterHostedService>();
 
 			builder.Services.AddHttpClient(
 				"DailyCurrencyClient",

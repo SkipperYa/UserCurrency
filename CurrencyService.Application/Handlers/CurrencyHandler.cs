@@ -21,7 +21,7 @@ namespace CurrencyService.Application.Handlers
 				throw new BusinessLogicException("UserId is required.");
 			}
 
-			var currencyUserList = await repository.GetUserCurrencies(command.UserId, cancellationToken);
+			var currencyUserList = await repository.GetUserCurrenciesAsync(command.UserId, cancellationToken);
 
 			return currencyUserList.Select(q => q.Currency).ToList();
 		}

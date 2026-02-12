@@ -32,7 +32,7 @@ namespace UserService.Application.Handlers
 			var hasPassword = await hashPasswordService.HashPasswordAsync(command.Password);
 
 			var user = await repository.GetByLoginAndPasswordAsync(command.UserName, hasPassword, cancellationToken)
-				?? throw new ApplicationErrorException($"Invalid login or password.");
+				?? throw new BusinessLogicException("Invalid login or password.");
 
 			var token = jwtTokenService.GetJwtToken(user.Id);
 

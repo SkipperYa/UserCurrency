@@ -54,7 +54,7 @@ namespace UserCurrency.BackgroundWorker.BackgroundServices
 
 			foreach (var currency in currencies)
 			{
-				await repository.CreateOrUpdate(currency, stoppingToken);
+				await repository.CreateOrUpdateAsync(currency, stoppingToken);
 			}
 		}
 

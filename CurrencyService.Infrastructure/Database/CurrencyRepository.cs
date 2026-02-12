@@ -15,7 +15,7 @@ namespace CurrencyService.Infrastructure.Database
 			this.applicationContext = applicationContext;
 		}
 
-		public async Task<List<CurrencyUser>> GetUserCurrencies(long userId, CancellationToken cancellationToken)
+		public async Task<List<CurrencyUser>> GetUserCurrenciesAsync(long userId, CancellationToken cancellationToken)
 		{
 			try
 			{
@@ -30,7 +30,7 @@ namespace CurrencyService.Infrastructure.Database
 			}
 		}
 
-		public async Task<Currency> CreateOrUpdate(Currency item, CancellationToken cancellationToken)
+		public async Task<Currency> CreateOrUpdateAsync(Currency item, CancellationToken cancellationToken)
 		{
 			try
 			{
