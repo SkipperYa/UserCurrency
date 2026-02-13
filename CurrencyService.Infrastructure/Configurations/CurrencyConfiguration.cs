@@ -1,6 +1,7 @@
 ﻿using CurrencyService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace CurrencyService.Infrastructure.Configurations
 {
@@ -28,7 +29,8 @@ namespace CurrencyService.Infrastructure.Configurations
 				.IsRequired();
 
 			builder.HasIndex(q => q.Name)
-				.IsUnique();
+				.IsUnique()
+				.IncludeProperties(c => new { c.Rate });
 		}
 	}
 }
