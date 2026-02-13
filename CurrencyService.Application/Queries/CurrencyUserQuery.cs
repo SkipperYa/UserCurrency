@@ -1,4 +1,5 @@
 ﻿using CurrencyService.Application.Interfaces;
+using UserCurrency.Common.Interfaces;
 
 namespace CurrencyService.Application.Queries
 {

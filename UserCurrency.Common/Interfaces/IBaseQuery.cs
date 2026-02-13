@@ -1,4 +1,4 @@
-﻿namespace CurrencyService.Application.Interfaces
+﻿namespace UserCurrency.Common.Interfaces
 {
 	/// <summary>
 	/// Базовый интерфейс запроса

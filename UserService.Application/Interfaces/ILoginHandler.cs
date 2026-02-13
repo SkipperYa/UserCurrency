@@ -1,11 +1,12 @@
-﻿using UserService.Application.Commands;
+﻿using UserCurrency.Common.Interfaces;
+using UserService.Application.Commands;
 
 namespace UserService.Application.Interfaces
 {
 	/// <summary>
 	/// Интерфейс обработчика авторизации пользователя
 	/// </summary>
-	public interface ILoginHandler : IBaseHandler<LoginUserCommand, string>
+	public interface ILoginHandler : IBaseCommandHandler<LoginUserCommand, string>
 	{
 	}
 }

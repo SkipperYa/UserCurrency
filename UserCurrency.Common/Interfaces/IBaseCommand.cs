@@ -1,4 +1,4 @@
-﻿namespace UserService.Application.Interfaces
+﻿namespace UserCurrency.Common.Interfaces
 {
 	/// <summary>
 	/// Базовый интерфейс команды

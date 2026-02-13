@@ -1,4 +1,4 @@
-﻿using UserService.Application.Interfaces;
+﻿using UserCurrency.Common.Interfaces;
 
 namespace UserService.Application.Commands
 {
